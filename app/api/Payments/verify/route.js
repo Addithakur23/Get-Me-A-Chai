@@ -11,6 +11,7 @@ export async function GET(){
     
      try { await connectDB()
        const session = await getServerSession(authOptions);
+       console.log("Provider:",session.provider)
        const creator=await User.findOne({Provider:session.provider})
      const response=await Payment.find({creatorId:creator._id}).sort({Amount:-1}).limit(10)
      const all=await Payment.find({ creatorId:creator._id})
