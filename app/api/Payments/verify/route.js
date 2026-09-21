@@ -9,14 +9,17 @@ import { getServerSession } from "next-auth";
 
 export async function GET(){
     
-       await connectDB()
+     try { await connectDB()
        const session = await getServerSession(authOptions);
        const creator=await User.findOne({Provider:session.provider})
      const response=await Payment.find({creatorId:creator._id}).sort({Amount:-1}).limit(10)
      const all=await Payment.find({ creatorId:creator._id})
      const total=all.reduce((sum,Payment)=>sum+Payment.Amount,0)
      const Payerscount=await Payment.countDocuments({creatorId:creator._id})
-        return NextResponse.json({response,totalAmount:total,totalPayments:Payerscount},{status:200})
+        return NextResponse.json({response,totalAmount:total,totalPayments:Payerscount},{status:200})}
+        catch(error){
+            return NextResponse.json({message:error.message},{status:500})
+        }
     
 }
 
