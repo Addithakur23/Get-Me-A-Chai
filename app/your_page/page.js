@@ -125,7 +125,7 @@ const page = () => {
         <div className='suppList  hide-scrollbar'>
           <div className="supportersList w-[81%]  flex flex-col text-sm justify-start items-start mt-2.5 ml-15">
             {Payers?.response.map((payment)=>(
-              <div className="supporter flex gap-2.5 mb-[22px]  text-sm flex-wrap" key={payment.payerName}><div className="personImg"><img src="image22-removebg-preview.png" alt="" width={20}/></div><b>{payment.payerName}</b> donated <b>₹{payment.Amount}</b>with a message "{payment.Message}"</div>
+              <div className="supporter flex gap-2.5 mb-[22px] relative z-20  text-sm flex-wrap" key={payment.payerName}><div className="personImg"><img src="image22-removebg-preview.png" alt="" width={20}/></div><b>{payment.payerName}</b> donated <b>₹{payment.Amount}</b>with a message "{payment.Message}"</div>
 
             ))}
           </div>
