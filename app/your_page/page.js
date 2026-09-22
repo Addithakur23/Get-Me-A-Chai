@@ -118,7 +118,7 @@ const page = () => {
     overflow: scroll; */}
         <div className="supporterCard hide-scrollbar overflow-y-scroll h-[547px] max-sm:!w-[81%] max-[996px]:!w-[80%] max-lg:w-[44%] w-[40%] py-9.75 bg-[#303841] rounded-md mt-11.75 ">
           
-          <div className="supporterHeading ml-8.75 text-[25px] mb-3.5 font-bold">
+          <div className="supporterHeading ml-8.75 sticky top-0 z-[500] text-[25px] mb-3.5 font-bold">
           Top 10 Supporters
           </div>
           {/* max-[524px]:overflow-x-scroll  w-[513px] max-[530px]:w-[383px]*/}
