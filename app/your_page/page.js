@@ -105,7 +105,7 @@ const page = () => {
           <img className='cover_pictureImg w-full h-[35vh] relative' src={User.Cover_picture} alt="" height={50} />
         </div>
         <div className="profile_Picture flex justify-center">
-          <img className='profile_pictureImg absolute top-[305px] border-2 border-white rounded-[100px] z-200' src={User.Profile_picture} alt="" width={100}  />
+          <img className='profile_pictureImg absolute top-[247px] max-md:top-[305px] border-2 border-white rounded-[100px] z-200' src={User.Profile_picture} alt="" width={100}  />
         </div>
         <div className="userInfo flex flex-col justify-center items-center gap-2.25 mt-17.5 text-gray-400">
           <div className="name font-medium text-white">@{User.Username}</div>
@@ -116,16 +116,16 @@ const page = () => {
         <div className="userCards  flex    max-[996px]:flex-col max-[996px]:items-center justify-center gap-2.5 mb-[10%] ">
           {/* height: 547px;
     overflow: scroll; */}
-        <div className="supporterCard hide-scrollbar overflow-y-scroll h-[547px] max-sm:!w-[81%] max-[996px]:!w-[80%] max-lg:w-[44%] w-[40%] py-9.75 bg-[#303841] rounded-md mt-11.75 ">
+        <div className="supporterCard hide-scrollbar h-[547px] max-sm:!w-[81%] max-[996px]:!w-[80%] max-lg:w-[44%] w-[40%] py-9.75 bg-[#303841] rounded-md mt-11.75 ">
           
           <div className="supporterHeading ml-8.75 sticky top-0 z-[500] text-[25px] mb-3.5 font-bold">
           Top 10 Supporters
           </div>
           {/* max-[524px]:overflow-x-scroll  w-[513px] max-[530px]:w-[383px]*/}
-        <div className='suppList  hide-scrollbar'>
+        <div className='suppList h-[98%] overflow-y-scroll hide-scrollbar'>
           <div className="supportersList w-[81%]  flex flex-col text-sm justify-start items-start mt-2.5 ml-15">
             {Payers?.response.map((payment)=>(
-              <div className="supporter flex gap-2.5 mb-[22px] relative z-20  text-sm flex-wrap" key={payment.payerName}><div className="personImg"><img src="image22-removebg-preview.png" alt="" width={20}/></div><b>{payment.payerName}</b> donated <b>₹{payment.Amount}</b>with a message "{payment.Message}"</div>
+              <div className="supporter flex gap-2.5 mb-[22px] text-sm flex-wrap" key={payment.payerName}><div className="personImg"><img src="image22-removebg-preview.png" alt="" width={20}/></div><b>{payment.payerName}</b> donated <b>₹{payment.Amount}</b>with a message "{payment.Message}"</div>
 
             ))}
           </div>
