@@ -122,7 +122,7 @@ const page = () => {
           Top 10 Supporters
           </div>
           {/* max-[524px]:overflow-x-scroll  w-[513px] max-[530px]:w-[383px]*/}
-        <div className='suppList h-[98%] overflow-y-scroll hide-scrollbar'>
+        <div className='suppList h-[96%] overflow-y-scroll hide-scrollbar'>
           <div className="supportersList w-[81%]  flex flex-col text-sm justify-start items-start mt-2.5 ml-15">
             {Payers?.response.map((payment)=>(
               <div className="supporter flex gap-2.5 mb-[22px] text-sm flex-wrap" key={payment.payerName}><div className="personImg"><img src="image22-removebg-preview.png" alt="" width={20}/></div><b>{payment.payerName}</b> donated <b>₹{payment.Amount}</b>with a message "{payment.Message}"</div>
