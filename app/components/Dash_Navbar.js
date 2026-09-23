@@ -20,7 +20,7 @@ const Dash_Navbar = () => {
      <nav className='flex z-250 justify-between text-white items-center p-2 sticky top-0 bg-gray-800'>
       <div className='appName font-bold flex justify-center items-center'>
        <div className='cupImg'><img src="\tea_cup_image-removebg-preview.png" alt="" width={40}/></div> 
-       <div className='appNameText text-[17px]'>Get Me a Chai!</div> 
+       <div className='appNameText text-[17px]' onClick={()=>{<Link href="/login"></Link>}}>Get Me a Chai!</div> 
      
           
         </div>
