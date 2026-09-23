@@ -107,7 +107,7 @@ const page = () => {
         <div className="profile_Picture flex justify-center  relative bottom-[53px] z-[200] items-center">
           <img className='profile_pictureImg border-2 border-white rounded-[100px]' src={User.Profile_picture} alt="" width={100}  />
         </div>
-        <div className="userInfo flex flex-col justify-center items-center gap-2.25 text-gray-400">
+        <div className="userInfo flex relative bottom-[24px] flex-col justify-center items-center gap-2.25 text-gray-400">
           <div className="name font-medium text-white">@{User.Username}</div>
           <div className="nameText text-[13px]">Lets help {User.Name} get a chai!</div>
           <div className="payments text-[13px]">{Payers?.totalPayments} payments . ₹{Payers?.totalAmount} raised</div>
