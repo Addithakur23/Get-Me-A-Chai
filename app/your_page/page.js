@@ -102,12 +102,12 @@ const page = () => {
         <Dash_Navbar/>
       { Active? <Hamburger/>:""}
         <div className="cover_Picture">
-          <img className='cover_pictureImg w-full h-[35vh] relative' src={User.Cover_picture} alt="" height={50} />
+          <img className='cover_pictureImg w-full h-[35vh]' src={User.Cover_picture} alt="" height={50} />
         </div>
-        <div className="profile_Picture flex justify-center">
-          <img className='profile_pictureImg absolute top-[247px] max-md:top-[305px] border-2 border-white rounded-[100px] z-200' src={User.Profile_picture} alt="" width={100}  />
+        <div className="profile_Picture flex justify-center  relative bottom-[53px] z-[200] items-center">
+          <img className='profile_pictureImg border-2 border-white rounded-[100px]' src={User.Profile_picture} alt="" width={100}  />
         </div>
-        <div className="userInfo flex flex-col justify-center items-center gap-2.25 mt-17.5 text-gray-400">
+        <div className="userInfo flex flex-col justify-center items-center gap-2.25 text-gray-400">
           <div className="name font-medium text-white">@{User.Username}</div>
           <div className="nameText text-[13px]">Lets help {User.Name} get a chai!</div>
           <div className="payments text-[13px]">{Payers?.totalPayments} payments . ₹{Payers?.totalAmount} raised</div>
@@ -118,7 +118,7 @@ const page = () => {
     overflow: scroll; */}
         <div className="supporterCard hide-scrollbar h-[547px] max-sm:!w-[81%] max-[996px]:!w-[80%] max-lg:w-[44%] w-[40%] py-9.75 bg-[#303841] rounded-md mt-11.75 ">
           
-          <div className="supporterHeading ml-8.75 sticky top-0 z-[500] text-[25px] mb-3.5 font-bold">
+          <div className="supporterHeading ml-8.75 sticky top-0 z-[210] text-[25px] mb-3.5 font-bold">
           Top 10 Supporters
           </div>
           {/* max-[524px]:overflow-x-scroll  w-[513px] max-[530px]:w-[383px]*/}
