@@ -9,7 +9,7 @@ import Dash_Navbar from "./components/Dash_Navbar.js";
 export default function Home() {
   const{data :session}=useSession()
   return (<>
-    {session.user.email?<Dash_Navbar/>:<Navbar/>}
+    {session?<Dash_Navbar/>:<Navbar/>}
     <div className="main">
    <div className="firstSec pt-21.25 pb-27.5 text-white">
     <div className="appIntro flex items-center justify-center font-bold text-[45px] max-sm:text-[35px] max-sm:gap-4.5  gap-14.75">
