@@ -8,7 +8,6 @@ import Dash_Navbar from "./components/Dash_Navbar.js";
 
 export default function Home() {
   const{data :session}=useSession()
-  if(session){
   return (<>
     {session.user.email?<Dash_Navbar/>:<Navbar/>}
     <div className="main">
@@ -69,4 +68,4 @@ export default function Home() {
    </>
   );
 }
-}
+

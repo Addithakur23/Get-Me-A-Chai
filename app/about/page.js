@@ -1,10 +1,10 @@
+"use client"
 import React from 'react'
 import { useSession } from 'next-auth/react'
 import Dash_Navbar from '../components/Dash_Navbar'
 import Navbar from '../components/Navbar'
 const page = () => {
    const{data :session}=useSession()
-   if(session){
   return (
     <>
     {session.user.email?<Dash_Navbar/>:<Navbar/>}
@@ -67,6 +67,6 @@ const page = () => {
     </>
   )
 }
-}
+
 
 export default page
