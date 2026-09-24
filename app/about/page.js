@@ -7,7 +7,7 @@ const page = () => {
    if(session){
   return (
     <>
-    {session.user.email?<Dash_Navbar/>:<Navbar/>}
+    {session.user.email?<Dash_Navbar/>:"Hello no login"}
     <div className='aboutSec flex flex-col items-center '>
     <div className="about w-[60vw] max-[700px]:w-[68vw] max-[520px]:w-[82vw] flex flex-col mx-auto mt-4 ">
     <div className='aboutHeading text-2xl font-semibold mb-3'>
