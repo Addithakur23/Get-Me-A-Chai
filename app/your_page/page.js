@@ -102,7 +102,7 @@ const page = () => {
         <Dash_Navbar/>
       { Active? <Hamburger/>:""}
         <div className="cover_Picture">
-          <img className='cover_pictureImg w-full h-[35vh]' src={User.Cover_picture} alt="" height={50} />
+          <img className='cover_pictureImg w-full h-[35vh] object-cover' src={User.Cover_picture} alt="" height={50} />
         </div>
         <div className="profile_Picture flex justify-center  relative bottom-[53px] z-[200] items-center">
           <img className='profile_pictureImg border-2 border-white rounded-[100px]' src={User.Profile_picture} alt="" width={100}  />
