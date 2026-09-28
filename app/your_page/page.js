@@ -110,7 +110,9 @@ const page = () => {
   })
 
   console.log("Opening Razorpay")
+  console.log("Before Open")
   rzp.open();
+  console.log("After Open")
 
   setpayerName("")
   setpayerAmount("")
