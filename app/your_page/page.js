@@ -1,9 +1,9 @@
 "use client"
-import React from 'react'
+import React, { useRef } from 'react'
 import Script from 'next/script.js'
 import Dash_Navbar from '../components/Dash_Navbar.js'
 import Footer from '../components/Footer.js'
-import { useState,useEffect } from 'react'
+import { useState,useEffect,useRef } from 'react'
 import { NextResponse } from 'next/server.js'
 
 import Razorpay from 'razorpay'
@@ -11,6 +11,8 @@ import Hamburger from '../components/Hamburger.js'
 
 const page = () => {
    const [User, setUser] = useState(null)
+   const [IsPaying, setIsPaying] = useState(false)
+   const razorpayRef=useRef(null)
     const [Payers, setPayers] = useState(null)
    const [payerName, setpayerName] = useState("")
    const [Message, setMessage] = useState("")
@@ -42,7 +44,9 @@ const page = () => {
   }
 
   async function payHandler() {
-  
+    if(IsPaying) return;
+    setIsPaying(true)
+  try{
   if(payerName==""|| payerAmount==""){
     alert("Please fill the Name and Amount field")
     return
@@ -55,11 +59,20 @@ const page = () => {
   const response=await fetch("/api/Payments/create-order",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username})})
   if(!response.ok){
     const error=await response.json()
-    console.error(error.message)
+    console.error("Create order error :",error.message)
+    setIsPaying(false)
     return
   }
   const order=await response.json()
-  
+  console.log("Order created:", order)
+  console.log("Razorpay Key:",User.Razorpay.ID)
+  console.log("Razorpay SDK:",window.Razorpay)
+
+  if(!window.Razorpay){
+    console.error("Razorpay SDK not loaded")
+    setIsPaying(false)
+    return
+  }
   const options={
     key:User.Razorpay.ID,
     amount:order.amount,
@@ -68,6 +81,7 @@ const page = () => {
     
     name:"Get Me a Chai",
     handler:async function (response) {
+      console.log("RAZORPAY SUCCESS",response)
       await fetch("/api/Payments/verify",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username,razorpay_order_id:response.razorpay_order_id,
         razorpay_payment_id:response.razorpay_payment_id,
         razorpay_signature:response.razorpay_signature
@@ -78,15 +92,33 @@ const page = () => {
       setTimeout(() => {
         setActive(false)
       }, 4000);
+    }, modal:{
+      ondismiss:function (){
+        console.log("Razorpay checkout dismissed")
+        razorpayRef.current=null
+        setIsPaying(false)
+      }
     }
   }
  
   const rzp=new window.Razorpay(options);
+  razorpayRef.current=rzp
+  rzp.on("Payment.failed",function(response){
+    console.error("Razorpay Payment failed:" ,response.error)
+    razorpayRef.current=null
+    setIsPaying(false)
+  })
+
+  console.log("Opening Razorpay")
   rzp.open();
 
   setpayerName("")
   setpayerAmount("")
   setMessage("")
+}catch(error){
+  console.error("Payment Error",error)
+  setIsPaying(false)
+}
  }
       function handleClick(){
      setClick(true)
