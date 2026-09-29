@@ -37,88 +37,92 @@ const page = () => {
   }, []);
 
   if(!User){
-    return <div>Loading !!!</div>
+    return(<>
+    <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive"/>
+    <div>Loading !!!</div>
+    </>
+    ) 
   }
 
-  async function payHandler() {
-    if(IsPaying) return;
-    setIsPaying(true)
-  try{
-  if(payerName==""|| payerAmount==""){
-    alert("Please fill the Name and Amount field")
-    return
+ async function payHandler() {
+  if (IsPaying) return;
+
+  const amount = Number(payerAmount);
+  if (!payerName.trim() || !payerAmount) {
+    alert("Please fill the Name and Amount field");
+    return;
+  }
+  if (!(amount >= 1)) {
+    alert("Please enter amount greater than 0");
+    return;
   }
 
-  if(payerAmount<1){
-     alert("Please enter amount greater than 0")
-    return
+  setIsPaying(true);
+  const payload = { payerName, Message, payerAmount: amount, Username: User.Username };
+
+  try {
+    const response = await fetch("/api/Payments/create-order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+    if (!response.ok) {
+      const error = await response.json();
+      console.error("Create order error:", error.message);
+      setIsPaying(false);
+      return;
     }
-  const response=await fetch("/api/Payments/create-order",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username})})
-  if(!response.ok){
-    const error=await response.json()
-    console.error("Create order error :",error.message)
-    setIsPaying(false)
-    return
-  }
-  const order=await response.json()
-  console.log("Order created:", order)
-  console.log("Razorpay Key:",User.Razorpay.ID)
-  console.log("Razorpay SDK:",window.Razorpay)
+    const order = await response.json();
 
-  if(!window.Razorpay){
-    console.error("Razorpay SDK not loaded")
-    setIsPaying(false)
-    return
-  }
-  const options={
-    key:User.Razorpay.ID,
-    amount:order.amount,
-    currency:order.currency,
-    order_id:order.id,
-    
-    name:"Get Me a Chai",
-    handler:async function (response) {
-      console.log("RAZORPAY SUCCESS",response)
-      await fetch("/api/Payments/verify",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username,razorpay_order_id:response.razorpay_order_id,
-        razorpay_payment_id:response.razorpay_payment_id,
-        razorpay_signature:response.razorpay_signature
-      })})      
-      await loadPayers()
-
-      setActive(true)
-      setTimeout(() => {
-        setActive(false)
-      }, 4000);
-    }, modal:{
-      ondismiss:function (){
-        console.log("Razorpay checkout dismissed")
-        razorpayRef.current=null
-        setIsPaying(false)
-      }
+    if (!window.Razorpay) {
+      console.error("Razorpay SDK not loaded");
+      setIsPaying(false);
+      return;
     }
+
+    const rzp = new window.Razorpay({
+      key: User.Razorpay.ID,
+      amount: order.amount,
+      currency: order.currency,
+      order_id: order.id,
+      name: "Get Me a Chai",
+      handler: async function (res) {
+        try {
+          await fetch("/api/Payments/verify", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              ...payload,
+              razorpay_order_id: res.razorpay_order_id,
+              razorpay_payment_id: res.razorpay_payment_id,
+              razorpay_signature: res.razorpay_signature,
+            }),
+          });
+          await loadPayers();
+          setpayerName(""); setpayerAmount(""); setMessage("");
+          setActive(true);
+          setTimeout(() => setActive(false), 4000);
+        } finally {
+          setIsPaying(false);
+        }
+      },
+      modal: { ondismiss: () => setIsPaying(false) },
+    });
+
+    rzp.on("payment.failed", (res) => {
+      console.error("Razorpay Payment failed:", res.error);
+      setIsPaying(false);
+    });
+
+    rzp.open();
+  } catch (error) {
+    console.error("Payment Error", error);
+    setIsPaying(false);
   }
- 
-  const rzp=new window.Razorpay(options);
-  razorpayRef.current=rzp
-  rzp.on("Payment.failed",function(response){
-    console.error("Razorpay Payment failed:" ,response.error)
-    razorpayRef.current=null
-    setIsPaying(false)
-  })
-
-  console.log("Opening Razorpay")
-  console.log("Before Open")
-  rzp.open();
-  console.log("After Open")
-
   setpayerName("")
   setpayerAmount("")
   setMessage("")
-}catch(error){
-  console.error("Payment Error",error)
-  setIsPaying(false)
 }
- }
       function handleClick(){
      setClick(true)
       setTimeout(() => {
@@ -128,7 +132,7 @@ const page = () => {
   }
         return (
           <>
-          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive"/>
+          {/* <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive"/> */}
     <div className='mainYourPage'>
         <Dash_Navbar/>
       {/* { Active? <Hamburger/>:""} */}
