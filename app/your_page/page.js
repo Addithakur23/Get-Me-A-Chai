@@ -4,9 +4,6 @@ import Script from 'next/script.js'
 import Dash_Navbar from '../components/Dash_Navbar.js'
 import Footer from '../components/Footer.js'
 import { useState,useEffect,useRef } from 'react'
-import { NextResponse } from 'next/server.js'
-
-import Razorpay from 'razorpay'
 import Hamburger from '../components/Hamburger.js'
 
 const page = () => {
