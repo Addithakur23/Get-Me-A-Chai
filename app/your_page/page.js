@@ -131,7 +131,7 @@ const page = () => {
           <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive"/>
     <div className='mainYourPage'>
         <Dash_Navbar/>
-      { Active? <Hamburger/>:""}
+      {/* { Active? <Hamburger/>:""} */}
         <div className="cover_Picture">
           <img className='cover_pictureImg w-full h-[35vh] object-cover' src={User.Cover_picture} alt="" height={50} />
         </div>
