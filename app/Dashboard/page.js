@@ -13,7 +13,7 @@ const page = () => {
   const [Username, setUsername] = useState("")
   const [Profile_picture, setProfile_picture] = useState("")
   const [Cover_picture, setCover_picture] = useState("/roman 2.jpg")
-  const [Razorpay_ID, setRazorpay_ID] = useState("rzp_test_TIEYfQ51RC8bFC")
+  const [Razorpay_ID, setRazorpay_ID] = useState("rzp_test_TemDUYWupwbj65")
   const [Razorpay_secret, setRazorpay_secret] = useState("")
   const [Success, setSuccess] = useState(false)
   const [Change, setChange] = useState(false)
