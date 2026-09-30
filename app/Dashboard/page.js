@@ -34,8 +34,8 @@ setEmail(user.Email ?? session.user?.email ?? "pundhiraditya428@gmail.com");
 setUsername(user.Username ?? session.user.name);
 setProfile_picture(user.Profile_picture ?? session.user.image);
 setCover_picture(user.Cover_picture ?? "/roman 2.jpg");
-setRazorpay_ID(user.Razorpay?.ID ?? "rzp_test_TIEYfQ51RC8bFC");
-setRazorpay_secret(user.Razorpay?.secret ??"nG7fynxN6LxwNbqLW2qZvkMN");
+setRazorpay_ID(user.Razorpay?.ID ?? "rzp_test_TemDUYWupwbj65");
+setRazorpay_secret(user.Razorpay?.secret ??"wHzNNjZXqvdXNTn4u2wkldPw");
         }
         if(session){
          setProvider(session.provider)
