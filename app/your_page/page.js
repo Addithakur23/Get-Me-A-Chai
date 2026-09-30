@@ -4,6 +4,7 @@ import Script from 'next/script.js'
 import Dash_Navbar from '../components/Dash_Navbar.js'
 import Footer from '../components/Footer.js'
 import { useState,useEffect,useRef } from 'react'
+import Script from 'next/script.js'
 import Hamburger from '../components/Hamburger.js'
 
 const page = () => {
