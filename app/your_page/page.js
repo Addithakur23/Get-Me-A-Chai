@@ -42,17 +42,17 @@ const page = () => {
 
   async function payHandler() {
     if(IsPaying) return;
+    if(payerName==""|| payerAmount==""){
+      alert("Please fill the Name and Amount field")
+      return
+    }
+    
+    if(payerAmount<1){
+      alert("Please enter amount greater than 0")
+      return
+    }
     setIsPaying(true)
   try{
-  if(payerName==""|| payerAmount==""){
-    alert("Please fill the Name and Amount field")
-    return
-  }
-
-  if(payerAmount<1){
-     alert("Please enter amount greater than 0")
-    return
-    }
   const response=await fetch("/api/Payments/create-order",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username})})
   if(!response.ok){
     const error=await response.json()
