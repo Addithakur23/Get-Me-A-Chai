@@ -1,9 +1,9 @@
 "use client"
 import React from 'react'
+import Script from 'next/script.js'
 import Dash_Navbar from '../components/Dash_Navbar.js'
 import Footer from '../components/Footer.js'
 import { useState,useEffect,useRef } from 'react'
-import Script from 'next/script.js'
 import Hamburger from '../components/Hamburger.js'
 
 const page = () => {
@@ -46,11 +46,11 @@ const page = () => {
       alert("Please fill the Name and Amount field")
       return
     }
-    
+  
     if(payerAmount<1){
-      alert("Please enter amount greater than 0")
+       alert("Please enter amount greater than 0")
       return
-    }
+      }
     setIsPaying(true)
   try{
   const response=await fetch("/api/Payments/create-order",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username})})
@@ -82,9 +82,13 @@ const page = () => {
       await fetch("/api/Payments/verify",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username,razorpay_order_id:response.razorpay_order_id,
         razorpay_payment_id:response.razorpay_payment_id,
         razorpay_signature:response.razorpay_signature
-      })})      
+      })})
+      if(!verification.ok){
+        throw new Error("Payment verification failed")
+      }
       await loadPayers()
 
+      setIsPaying(false)
       setActive(true)
       setTimeout(() => {
         setActive(false)
@@ -100,7 +104,7 @@ const page = () => {
  
   const rzp=new window.Razorpay(options);
   razorpayRef.current=rzp
-  rzp.on("Payment.failed",function(response){
+  rzp.on("payment.failed",function(response){
     console.error("Razorpay Payment failed:" ,response.error)
     razorpayRef.current=null
     setIsPaying(false)
