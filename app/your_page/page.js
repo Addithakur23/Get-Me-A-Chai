@@ -17,6 +17,7 @@ const page = () => {
    const [payerAmount, setpayerAmount] = useState("")
    const [Active, setActive] = useState(false)
    const [Click, setClick] = useState(false)
+   const [RazorpayLoaded, setRazorpayLoaded] = useState(false)
 
    async function loadPayers(){
      const response=await fetch("/api/Payments/verify")
@@ -80,9 +81,13 @@ const page = () => {
       }, 4000);
     }
   }
- 
+ if(!RazorpayLoaded || !window.Razorpay){
+  console.log("Payment is still Loading, please try again")
+ }
+ else{
   const rzp=new window.Razorpay(options);
   rzp.open();
+}
 
   setpayerName("")
   setpayerAmount("")
@@ -97,7 +102,7 @@ const page = () => {
   }
         return (
           <>
-          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnLoad"/>
+          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnLoad" onLoad={()=>{console.log("Razorpay SDK Loaded")  ,setRazorpayLoaded(true)}} onError={()=>{console.error("Payment SDK not loaded")}}/>
     <div className='mainYourPage'>
         <Dash_Navbar/>
       { Active? <Hamburger/>:""}
