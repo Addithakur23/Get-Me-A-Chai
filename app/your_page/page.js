@@ -81,7 +81,7 @@ const page = () => {
     }
   }
  
-  const rzp=new window.Razorpay(options);
+  var rzp=new Razorpay(options);
   rzp.open();
 
   setpayerName("")
@@ -97,7 +97,7 @@ const page = () => {
   }
         return (
           <>
-          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive"/>
+          <Script src="https://checkout.razorpay.com/v1/checkout.js" />
     <div className='mainYourPage'>
         <Dash_Navbar/>
       { Active? <Hamburger/>:""}
