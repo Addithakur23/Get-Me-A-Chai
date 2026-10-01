@@ -97,7 +97,7 @@ const page = () => {
   }
         return (
           <>
-          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive"/>
+          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnLoad"/>
     <div className='mainYourPage'>
         <Dash_Navbar/>
       { Active? <Hamburger/>:""}
