@@ -3,7 +3,7 @@ import React from 'react'
 import Script from 'next/script.js'
 import Dash_Navbar from '../components/Dash_Navbar.js'
 import Footer from '../components/Footer.js'
-import { useState,useEffect,useRef } from 'react'
+import { useState,useEffect } from 'react'
 // import { NextResponse } from 'next/server.js'
 
 // import Razorpay from 'razorpay'
@@ -17,9 +17,6 @@ const page = () => {
    const [payerAmount, setpayerAmount] = useState("")
    const [Active, setActive] = useState(false)
    const [Click, setClick] = useState(false)
-  const [loadCheckout, setLoadCheckout] = useState(false)
-  const [checkoutReady, setCheckoutReady] = useState(false)
-  const paymentPending = useRef(false)
 
    async function loadPayers(){
      const response=await fetch("/api/Payments/verify")
@@ -91,22 +88,6 @@ const page = () => {
   setpayerAmount("")
   setMessage("")
  }
-      function requestPayment(){
-        handleClick()
-        if(checkoutReady){
-          payHandler()
-          return
-        }
-        paymentPending.current=true
-        setLoadCheckout(true)
-      }
-      function handleCheckoutReady(){
-        setCheckoutReady(true)
-        if(paymentPending.current){
-          paymentPending.current=false
-          payHandler()
-        }
-      }
       function handleClick(){
      setClick(true)
       setTimeout(() => {
@@ -116,7 +97,7 @@ const page = () => {
   }
         return (
           <>
-          {loadCheckout && <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive" onReady={handleCheckoutReady} />}
+          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive"/>
     <div className='mainYourPage'>
         <Dash_Navbar/>
       { Active? <Hamburger/>:""}
@@ -160,7 +141,7 @@ const page = () => {
        <input type="text" className='PaymentInput p-3.75 w-[84%] bg-gray-600 rounded-md' value={Message} placeholder='Enter Message' maxLength={32}  onChange={(e)=>{setMessage(e.target.value)}}/>
 
        <input type="number" className='PaymentInput p-3.75 w-[84%] bg-gray-600 rounded-md' placeholder='Enter Amount' value={payerAmount} onChange={(e)=>{setpayerAmount(e.target.value)}}/>
-      <button id='payBtn' className='PayButton py-3 rounded-md ml-1.20 border-none bg-[radial-gradient(circle_farthest-corner_at_10%_20%,rgb(211_211_211)_0%,rgb(184_192_203)_51.2%,rgb(92_106_125)_100.1%)] w-[84%] font-semibold cursor-pointer' onClick={requestPayment} style={{background:Click?"purple":"radial-gradient(circle farthest-corner at 10% 20%,rgb(211 211 211)_0%,rgb(184 192 203)_51.2%,rgb(92 106 125)_100.1%)"}}>Pay</button>
+       <button id='payBtn' className='PayButton py-3 rounded-md ml-1.20 border-none bg-[radial-gradient(circle_farthest-corner_at_10%_20%,rgb(211_211_211)_0%,rgb(184_192_203)_51.2%,rgb(92_106_125)_100.1%)] w-[84%] font-semibold cursor-pointer' onClick={()=>{payHandler(),handleClick()}}  style={{background:Click?"purple":"radial-gradient(circle farthest-corner at 10% 20%,rgb(211 211 211) 0%,rgb(184 192 203) 51.2%,rgb(92 106 125) 100.1%)"}}>Pay</button>
          </div>
         <div className="payAmountBtns mt-6.25 ml-8.75 flex gap-2">
           <button id="pay10" className='PayShortcut cursor-pointer border-none rounded-md font-semibold bg-gray-600 p-3.25   ' onClick={()=>{setpayerAmount(10)}}>Pay ₹10</button>
