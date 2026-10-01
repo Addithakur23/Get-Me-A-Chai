@@ -87,11 +87,11 @@ const page = () => {
  else{
   const rzp=new window.Razorpay(options);
   rzp.open();
-}
-
   setpayerName("")
   setpayerAmount("")
   setMessage("")
+}
+
  }
       function handleClick(){
      setClick(true)
@@ -102,7 +102,7 @@ const page = () => {
   }
         return (
           <>
-          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="lazyOnLoad" onLoad={()=>{console.log("Razorpay SDK Loaded")  ,setRazorpayLoaded(true)}} onError={()=>{console.error("Payment SDK not loaded")}}/>
+          <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="beforeInteractive" onLoad={()=>{console.log("Razorpay SDK Loaded")  ,setRazorpayLoaded(true)}} onError={()=>{console.error("Payment SDK not loaded")}}/>
     <div className='mainYourPage'>
         <Dash_Navbar/>
       { Active? <Hamburger/>:""}
