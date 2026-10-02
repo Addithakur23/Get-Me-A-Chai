@@ -30,7 +30,7 @@ hide-scrollbar::-webkit-scrollbar{
       right: 0px;
     }
    
-    80%{
+    50%{
         opacity: 1;
       right:56px;
     }
@@ -40,5 +40,5 @@ hide-scrollbar::-webkit-scrollbar{
       right: 0px;
     }
   }
-    --animate-HamburgerSlider:HamburgerSlider 2s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+    --animate-HamburgerSlider:HamburgerSlider 3s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
 }
