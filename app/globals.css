@@ -30,12 +30,12 @@ hide-scrollbar::-webkit-scrollbar{
       right: 0px;
     }
    
-    10%{
+    5%{
         opacity: 1;
       right:56px;
     }
 
-    60%{
+    50%{
         opacity: 1;
       right:56px;
     }
