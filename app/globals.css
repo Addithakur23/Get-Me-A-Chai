@@ -45,6 +45,6 @@ hide-scrollbar::-webkit-scrollbar{
       right: 0px;
     }
   }
-    --animate-HamburgerSlider:HamburgerSlider 4s cubic-bezier(.67,.07,.36,.92) forwards;
+    --animate-HamburgerSlider:HamburgerSlider 4s ease forwards;
     /* cubic-bezier(0.1, 0.8, 0.3, 1)  */
 }
