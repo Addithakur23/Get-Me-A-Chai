@@ -8,7 +8,7 @@ import Hamburger from './Hamburger.js'
 
 const Dash_Navbar = () => {
   const [Show, setShow] = useState(false)
-  const [BtnNor, setBtnNor] = useState(true)
+  const [BtnNor, setBtnNor] = useState(false)
       const{data :session}=useSession()
      if(session){
     //   return <>
