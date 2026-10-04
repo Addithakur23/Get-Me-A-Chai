@@ -22,7 +22,7 @@ export default function Home() {
         <div className="infoText2 mx-3">A place where fans can buy you a chai. Unleash the power of your fans and get your projects funded.</div>
       </div>
       <div className="btns flex items-center justify-center gap-2 mt-3">
-       <Link href="/login"> <button id="startBtn" className="startButton gap-2.5 button text-white cursor-pointer border-0  px-5 py-3 rounded-[8px] text-sm font-bold bg-[linear-gradient(109.6deg,rgba(166,64,221,1)_21.2%,rgba(102,165,235,1)_74.4%)]">Start Here</button></Link>
+       <Link href={session? "/Dashboard":"/login"}> <button id="startBtn" className="startButton gap-2.5 button text-white cursor-pointer border-0  px-5 py-3 rounded-[8px] text-sm font-bold bg-[linear-gradient(109.6deg,rgba(166,64,221,1)_21.2%,rgba(102,165,235,1)_74.4%)]">{session? "Go to Dashboard":"Start Here"}</button></Link>
       <Link href="/about">  <button id="readBtn" className="readButton gap-2.5 button text-white cursor-pointer border-0  px-5 py-3 rounded-[8px] text-sm font-bold bg-[linear-gradient(109.6deg,rgba(166,64,221,1)_21.2%,rgba(102,165,235,1)_74.4%)]">Read More</button></Link>
       </div>   
    </div>
