@@ -33,19 +33,19 @@ export default function Home() {
         <div className="howFundraise flex max-lg:flex-wrap max-md:flex-col max-lg:gap-8 justify-center items-center gap-[12%] mt-7.5">
           <div className="fanHelp flex items-center flex-col">
           <div className="helpImg "><img src="\a_man_working_on_laptop-removebg-preview.png" className="helpImage p-2 rounded-[60px] bg-gray-500" alt="" width={75}/></div>  
-          <div className="helpText1 mt-1.5 mb-3.25 font-bold">Fan want to help</div>
+          <div className="helpText1 mt-1.5 mb-3.25 font-bold">Fans want to help</div>
           <div className="helpText2 text-sm text-gray-500">Your fans are available to support you</div>
           </div>
 
            <div className="fanMoney flex items-center flex-col">
           <div className="coinImg"><img className="coinImage p-2 rounded-[60px] bg-gray-500" src="\gold_coin-removebg-preview.png" alt="" width={75}/></div>  
-          <div className="moneyText1 mt-1.5 mb-3.25 font-bold">Fan want to contribute</div>
-          <div className="moneyText2 text-sm text-gray-500">Your fan willing to contribute financially</div>
+          <div className="moneyText1 mt-1.5 mb-3.25 font-bold">Fans want to contribute</div>
+          <div className="moneyText2 text-sm text-gray-500">Your fans are willing to contribute financially</div>
           </div>
 
            <div className="fanCollaborate  flex items-center flex-col">
           <div className="collaborateImg"><img className="collabImage p-2 rounded-[60px] bg-gray-500" src="\persons-removebg-preview.png" alt="" width={75}/></div>  
-          <div className="collaborateText1 mt-1.5 mb-3.25 font-bold">Fan want to collaborate</div>
+          <div className="collaborateText1 mt-1.5 mb-3.25 font-bold">Fans want to collaborate</div>
           <div className="collaborateText2 text-sm text-gray-500">Your fans are ready to collaborate with you</div>
           </div>
         </div>
