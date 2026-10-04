@@ -30,14 +30,19 @@ hide-scrollbar::-webkit-scrollbar{
       right: 0px;
     }
    
-    5%{
+    10%{
         opacity: 1;
       right:56px;
     }
 
-    55%{
+    35%{
         opacity: 1;
       right:56px;
+    }
+
+    45%{
+      opacity: 0;
+      right: 0px;
     }
 
     100%{
@@ -45,6 +50,6 @@ hide-scrollbar::-webkit-scrollbar{
       right: 0px;
     }
   }
-    --animate-HamburgerSlider:HamburgerSlider 4s ease forwards;
+    --animate-HamburgerSlider:HamburgerSlider 4s cubic-bezier(.67,.07,.36,.92) forwards;
     /* cubic-bezier(0.1, 0.8, 0.3, 1)  */
 }
