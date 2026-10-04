@@ -10,7 +10,7 @@ const Account_Hamburger = () => {
        <div className="dashboardOptions flex flex-col z-300 overflow-hidden bg-gray-500 w-full rounded-[7px]">
      <Link href="/Dashboard"><button className='DashButton hover:bg-gray-500 py-1.5 px-[18px] cursor-pointer flex border-none w-full bg-gray-400'>Dashboard</button></Link>
         <Link href="/your_page"><button className='DashButton hover:bg-gray-500 py-1.5 px-4.5 cursor-pointer flex border-none w-full bg-gray-400'>Your Page</button></Link>
-      <Link href="/login"><button className='DashButton hover:bg-gray-500 py-1.5 px-4.5 cursor-pointer flex border-none w-full bg-gray-400'>Sign Out</button></Link> 
+      <button className='DashButton hover:bg-gray-500 py-1.5 px-4.5 cursor-pointer flex border-none w-full bg-gray-400' onClick={()=>{signOut({callbackUrl:"/login"})}}>Sign Out</button>
        </div>
        </div>
   )
