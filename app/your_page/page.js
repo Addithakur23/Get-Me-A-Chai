@@ -128,7 +128,8 @@ const page = () => {
             {Payers?.response.map((payment)=>(
               <div className="supporter flex gap-2.5 mb-[22px] text-sm flex-wrap" key={payment.payerName}><div className="personImg"><img src="image22-removebg-preview.png" alt="" width={20}/></div><b>{payment.payerName}</b> donated <b>₹{payment.Amount}</b>with a message "{payment.Message}"</div>
 
-            )) ??"No supporters yet."}
+            ))}
+            {Payers?.response?.length ?? "No Supporters yet."}
           </div>
           </div>
         </div>
