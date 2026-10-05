@@ -127,7 +127,7 @@ const page = () => {
               <div className="supporter flex gap-2.5 mb-[22px] text-sm flex-wrap" key={payment.payerName}><div className="personImg"><img src="image22-removebg-preview.png" alt="" width={20}/></div><b>{payment.payerName}</b> donated <b>₹{payment.Amount}</b>with a message "{payment.Message}"</div>
 
             ))}
-            {Payers?.response?.length==0 && "No Supporters yet."}
+            {Payers?.response?.length==0 && "No supporters yet."}
           </div>
           </div>
         </div>
