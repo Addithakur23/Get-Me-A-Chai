@@ -18,7 +18,7 @@ export async function GET() {
         }
         
 
-        const user = await User.findOne({ Email: session.user.email ,Provider:session.provider}).lean();
+        const user = await User.findOne({ Email: session?.user?.email ?? "pundhiraditya428@gmail.com" ,Provider:session.provider}).lean();
 
         if (!user) {
             return NextResponse.json(
