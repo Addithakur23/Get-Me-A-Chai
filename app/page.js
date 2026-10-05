@@ -56,12 +56,7 @@ export default function Home() {
         <div className="LearnText text-[25px] font-bold mb-9">Learn more about us</div>
       <div className="video w-[588px] h-[332px] max-md:w-[500px] max-md:h-[278px]   max-sm:w-[422px] max-sm:h-[236px] max-[465px]:!w-[336px] max-[465px]:!h-[189px] max-[465px]:mb-24  flex items-center justify-center">
       <iframe  className="Frame border-none object-cover w-full h-full shrink-0"  src="https://www.youtube.com/embed/1BsVhumGlNc" title="Image, Lists, and Tables in HTML | Sigma Web Development Course - Tutorial #5"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe>
-        </div> 
-        {/*width="650"  height="350" */}
-        {/* widthwidth    width: 500px;
-    height: 278px;      height: 332px;
-    width: 550px;      width: 308px;
-    height: 189px;    width: 422px;  height: 236px; */}
+        </div>
        </div>
        <Footer/>
    </div>

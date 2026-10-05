@@ -11,10 +11,6 @@ const Dash_Navbar = () => {
   const [BtnNor, setBtnNor] = useState(true)
       const{data :session}=useSession()
      if(session){
-    //   return <>
-    //   signed in as {session.user.name} <br/>
-    //   <button onClick={()=> signOut()}>Sign Out</button>
-    //   </>
     
   return (
      <nav className='flex z-250 max-sm:flex-col max-sm:items-center justify-between text-white items-center p-2 sticky top-0 bg-gray-800'>

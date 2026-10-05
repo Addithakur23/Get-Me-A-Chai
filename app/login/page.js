@@ -3,14 +3,6 @@ import React from 'react'
 import Navbar from '../components/Navbar.js'
 import { signIn ,signOut,useSession} from 'next-auth/react'
 export default function Component(){
-//   const{data :session}=useSession()
-//  if(session){
-//   return <>
-//   signed in as {session.user.name} <br/>
-//   <button onClick={()=> signOut()}>Sign Out</button> 
-//   </>
-//  }
-
 
   return (
     <>
