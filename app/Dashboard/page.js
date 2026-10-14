@@ -109,6 +109,3 @@ setRazorpay_secret(user.Razorpay?.secret ??"wHzNNjZXqvdXNTn4u2wkldPw");
 
 
 export default page
-export const metadata = {
-    title: "Dashboard - Get Me A Chai",
-  }
