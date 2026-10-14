@@ -3,6 +3,7 @@ import React from 'react'
 import { useSession } from 'next-auth/react'
 import Dash_Navbar from '../components/Dash_Navbar'
 import Navbar from '../components/Navbar'
+import Footer from '../components/Footer'
 const page = () => {
    const{data :session}=useSession()
   return (
@@ -70,3 +71,6 @@ const page = () => {
 
 
 export default page
+export const metadata = {
+    title: "About - Get Me A Chai",
+  }
