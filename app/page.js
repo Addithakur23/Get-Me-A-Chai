@@ -58,8 +58,8 @@ export default function Home() {
       <iframe  className="Frame border-none object-cover w-full h-full shrink-0"  src="https://www.youtube.com/embed/1BsVhumGlNc" title="Image, Lists, and Tables in HTML | Sigma Web Development Course - Tutorial #5"  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"  allowFullScreen></iframe>
         </div>
        </div>
-   </div>
        <Footer/>
+   </div>
    </>
   );
 }
