@@ -10,6 +10,7 @@ const Dash_Navbar = () => {
   const [Show, setShow] = useState(false)
   const [BtnNor, setBtnNor] = useState(true)
       const{data :session}=useSession()
+      console.log(session)
      if(session){
     
   return (
