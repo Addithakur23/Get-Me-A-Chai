@@ -2,6 +2,7 @@ import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google"
 import TwitterProvider from "next-auth/providers/twitter"
+import User from "@/models/User";
 
 const authOptions={
     providers:[
@@ -28,7 +29,9 @@ const authOptions={
             }
             return token
         },
-        async session({session,token}){
+        async session({session,user,token}){
+            let dbUser=await User.findOne({Email:session.user.email})
+            session.user.username=dbUser.Username,
              session.provider=token.provider,
             session.providerAccountId=token.providerAccountId
             return session
