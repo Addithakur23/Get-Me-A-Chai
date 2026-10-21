@@ -21,6 +21,7 @@ const authOptions={
         
     ]
     ,secret: process.env.NEXTAUTH_SECRET,
+    session: { strategy: "jwt" },
     callbacks:{
         async jwt({token,account}){
             if(account) {
@@ -30,10 +31,17 @@ const authOptions={
             return token
         },
         async session({session,user,token}){
-            let dbUser=await User.findOne({Email:session.user.email})
-            session.user.username=dbUser.Username,
-             session.provider=token.provider,
-            session.providerAccountId=token.providerAccountId
+            if (!session?.user) return session
+
+            if (session.user.email) {
+                const dbUser=await User.findOne({Email:session.user.email})
+                if(dbUser){
+                    session.user.username=dbUser.Username
+                }
+            }
+            session.provider=token?.provider
+            session.providerAccountId=token?.providerAccountId
+            console.log(session)
             return session
         }
     },
