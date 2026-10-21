@@ -29,6 +29,7 @@ const page = () => {
         async function loadUser() {
           const response=await fetch("/api/user")
           const user=await response.json()
+          console.log(user)
         setName(user.Name ?? session.user.name);
 setEmail(user.Email ?? session.user?.email ?? "pundhiraditya428@gmail.com");
 setUsername(user.Username ?? session.user.name);
