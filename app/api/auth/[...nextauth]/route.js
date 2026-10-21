@@ -2,7 +2,7 @@ import NextAuth from "next-auth";
 import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google"
 import TwitterProvider from "next-auth/providers/twitter"
-import User from "@/models/User";
+import User from "@/models/User.js";
 
 const authOptions={
     providers:[
