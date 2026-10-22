@@ -3,6 +3,7 @@ import GithubProvider from "next-auth/providers/github";
 import GoogleProvider from "next-auth/providers/google"
 import TwitterProvider from "next-auth/providers/twitter"
 import User from "@/models/User.js";
+import connectDB from "@/lib/mongoConnect";
 
 const authOptions={
     providers:[
@@ -34,6 +35,7 @@ const authOptions={
             if (!session?.user) return session
 
             if (session.user.email) {
+                await connectDB()
                 const dbUser=await User.findOne({Email:session.user.email})
                 if(dbUser){
                     session.user.username=dbUser.Username
