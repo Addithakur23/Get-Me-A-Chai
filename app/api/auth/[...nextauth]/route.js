@@ -39,7 +39,7 @@ const authOptions={
                     session.user.username=dbUser.Username
                 }
             }
-            session.provider=token?.provider
+            session.provider=token?.provider,
             session.providerAccountId=token?.providerAccountId
             console.log(session)
             return session
