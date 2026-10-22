@@ -21,7 +21,7 @@ const authOptions={
         
     ]
     ,secret: process.env.NEXTAUTH_SECRET,
-    session: { strategy: "jwt" },
+    // session: { strategy: "jwt" },
     callbacks:{
         async jwt({token,account}){
             if(account) {
@@ -41,7 +41,7 @@ const authOptions={
             }
             session.provider=token?.provider,
             session.providerAccountId=token?.providerAccountId
-            console.log(session)
+            console.log("hello",session)
             return session
         }
     },
