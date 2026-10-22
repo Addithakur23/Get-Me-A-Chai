@@ -36,7 +36,7 @@ const authOptions={
 
             if (session.user.email) {
                 await connectDB()
-                const dbUser=await User.findOne({Email:session.user.email})
+                const dbUser=await User.findOne({Email:session.user.email,Name:session.user.name})
                 if(dbUser){
                     session.user.username=dbUser.Username
                 }
