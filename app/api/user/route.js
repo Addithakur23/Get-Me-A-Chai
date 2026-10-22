@@ -3,6 +3,7 @@ import connectDB from "@/lib/mongoConnect.js";
 import User from "@/models/User.js";
 import encrypt from "@/lib/encrypted.js";
 import { getServerSession } from "next-auth";
+import decrypt from "@/lib/decrypted";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route.js";
 import { handler } from "@/app/api/auth/[...nextauth]/route.js";
 
@@ -26,7 +27,7 @@ export async function GET() {
                 { status: 404 }
             );
         }
-
+        const decryptdata=decrypt(user.Razorpay.secret,user.Razorpay.iv)
         return NextResponse.json({
     Name: user.Name,
     Email: user.Email,
@@ -34,7 +35,8 @@ export async function GET() {
     Profile_picture: user.Profile_picture,
     Cover_picture: user.Cover_picture,
     Razorpay: {
-        ID: user.Razorpay.ID
+        ID: user.Razorpay.ID,
+        secret:decryptdata
     }
 }, { status: 200 });
     } catch (error) {
