@@ -1,7 +1,7 @@
 "use client"
 import React from 'react'
 
-const creators_Page =async ({creators}) => {
+const Creators_Page =async ({creators}) => {
     console.log(creators)
   return (
     <div className='creators flex flex-col gap-5 bg-purple-700 hover:bg-purple-800 text-white'>
@@ -16,4 +16,4 @@ const creators_Page =async ({creators}) => {
   )
 }
 
-export default creators_Page
+export default Creators_Page
