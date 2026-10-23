@@ -1,7 +1,8 @@
-
+"use client"
 import React from 'react'
 
 const Creators_Page =async ({creators}) => {
+  console.log("hello")
     console.log(creators)
   return (
     <div className='creators flex flex-col gap-5 bg-purple-700 hover:bg-purple-800 text-white'>
