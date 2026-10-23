@@ -10,8 +10,8 @@ import { handler } from "@/app/api/auth/[...nextauth]/route.js";
 export async function getAllUsers() {
     try{
         await connectDB()
-        const users=await User.find({})
-        return NextResponse.json({id:users._id,Name:users.Name},{status:200})
+        const users=await User.find({}).lean()
+        return NextResponse.json(users,{status:200})
     }catch(error){
         return NextResponse({message:error.message},{status:500})
     }
