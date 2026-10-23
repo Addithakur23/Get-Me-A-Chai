@@ -7,6 +7,18 @@ import decrypt from "@/lib/decrypted";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route.js";
 import { handler } from "@/app/api/auth/[...nextauth]/route.js";
 
+export async function getAllUsers() {
+    try{
+        await connectDB()
+        const users=await User.find({})
+        return NextResponse.json({users},{status:200})
+    }catch(error){
+        return NextResponse({message:error.message},{status:500})
+    }
+      
+
+}
+
 export async function GET() {
     try {
         await connectDB();
