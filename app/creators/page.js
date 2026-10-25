@@ -2,17 +2,21 @@ import React from 'react'
 // import Creators_Page from '../components/Creators_Page'
 import { getAllUsers } from '../api/user/route'
 const page = async() => {
-    const creators=await getAllUsers()
+  const [Creators, setCreators] = useState([])
+  const creators=await getAllUsers()
+  if(creators){
+    setCreators(creators)
+  }
     
     console.log(creators)
     
     return (
       <>
-      {/* <Creators_Page creators={creators}/>
+      <Creators_Page creators={creators}/>
       hello
-    <div className='text-white'>
+    {/* <div className='text-white'>
       
-    </div> */}
+    </div>
     <div className='creators flex flex-col gap-5 bg-purple-700 hover:bg-purple-800 text-white'>
       {console.log(creators)}
         {creators.map((creator,index)=>(
@@ -22,7 +26,7 @@ const page = async() => {
       </div>
 
         ))}
-    </div> 
+    </div>  */}
     </>
   )
 }
