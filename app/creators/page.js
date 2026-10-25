@@ -3,7 +3,7 @@ import Creators_Page from '../components/Creators_Page'
 import { getAllUsers } from '../api/user/route'
 const page = async() => {
     const creators=await getAllUsers()
-    const safeCreator=[]
+    let safeCreator=[]
     if(creators){
       safeCreator=creators.map((creator)=>({
         _id:creator._id.toString(),
