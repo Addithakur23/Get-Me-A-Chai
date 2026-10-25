@@ -19,9 +19,9 @@ const page = async() => {
       <div className="creator" key={index}>
         <div className="creatorName text-xl">{creator.Name}</div>
         <div className='creatorAbout text-sm'>lets help {creator.Name}</div>
-      </div> */}
+      </div>
 
-        ))}
+        ))} */}
     </div> 
     </>
   )
