@@ -3,12 +3,16 @@ import Creators_Page from '../components/Creators_Page'
 import { getAllUsers } from '../api/user/route'
 const page = async() => {
     const creators=await getAllUsers()
-    
+    const safeCreator=creators.map((creator)=>({
+      _id:creator._id.toString(),
+      Username:creator.Username,
+      Name:creator.Name
+    }))
     console.log(creators)
     
     return (
       <>
-      <Creators_Page creators={creators}/>
+      <Creators_Page creators={safeCreator}/>
       hello
     {/* <div className='text-white'>
       
