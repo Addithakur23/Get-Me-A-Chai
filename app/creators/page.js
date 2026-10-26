@@ -11,25 +11,10 @@ const page = async() => {
         Name:creator.Name
       }))
     }
-    console.log(creators)
     
     return (
       <>
       <Creators_Page creators={safeCreator}/>
-      hello
-    {/* <div className='text-white'>
-      
-    </div> */}
-    {/* <div className='creators flex flex-col gap-5 bg-purple-700 hover:bg-purple-800 text-white'>
-      {console.log(creators)}
-        {creators.map((creator,index)=>(
-      <div className="creator" key={index}>
-        <div className="creatorName text-xl">{creator.Name}</div>
-        <div className='creatorAbout text-sm'>lets help {creator.Name}</div>
-      </div>
-
-        ))}
-    </div>  */}
     </>
   )
 }

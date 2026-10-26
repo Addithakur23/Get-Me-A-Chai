@@ -11,12 +11,10 @@ export async function getAllUsers() {
     try{
         await connectDB()
         const users=await User.find({}).lean()
-        return NextResponse.json(users,{status:200})
+        return users
     }catch(error){
-        return NextResponse({message:error.message},{status:500})
+        return error.message
     }
-      
-
 }
 
 export async function GET() {
