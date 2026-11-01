@@ -5,6 +5,8 @@ import Dash_Navbar from '../components/Dash_Navbar.js'
 import Footer from '../components/Footer.js'
 import { useState,useEffect } from 'react'
 import Hamburger from '../components/Hamburger.js'
+import { useSession } from 'next-auth/react'
+import Navbar from './Navbar.js'
 
 const PaymentPage = ({username}) => {
    const [User, setUser] = useState(null)
@@ -14,6 +16,7 @@ const PaymentPage = ({username}) => {
    const [payerAmount, setpayerAmount] = useState("")
    const [Active, setActive] = useState(false)
    const [Click, setClick] = useState(false)
+   const{data :session}=useSession()
    console.log(username)
    async function loadPayers(){
      const response=await fetch(`/api/Payments/verify?username=${username}`)
@@ -96,7 +99,7 @@ const PaymentPage = ({username}) => {
           <>
           <Script src="https://checkout.razorpay.com/v1/checkout.js" strategy="afterInteractive"/>
     <div className='mainYourPage'>
-        <Dash_Navbar/>
+       { session?<Dash_Navbar/>:<Navbar/>}
       { Active? <Hamburger/>:""}
         <div className="cover_Picture">
           <img className='cover_pictureImg w-full h-[35vh] object-cover' src={User.Cover_picture} alt="" height={50} />
