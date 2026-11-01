@@ -11,7 +11,7 @@ const Dash_Navbar = () => {
   const [BtnNor, setBtnNor] = useState(true)
       const{data :session}=useSession()
       console.log(session)
-     if(session){
+   //   if(session){
     
   return (
      <nav className='flex z-250 max-sm:flex-col max-sm:items-center justify-between text-white items-center p-2 sticky top-0 bg-gray-800'>
@@ -30,6 +30,6 @@ const Dash_Navbar = () => {
     </nav>
   )
    }
-}
+// }
 
 export default Dash_Navbar
