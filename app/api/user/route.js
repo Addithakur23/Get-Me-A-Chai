@@ -33,7 +33,7 @@ export async function GET(request) {
         // }
         
 
-        const user = await User.findOne({ Email: session?.user?.email ?? "pundhiraditya428@gmail.com" ,Username:session?.user?.username ?? username}).lean();
+        const user = await User.findOne({Username:session?.user?.username ?? username}).lean();
 
         if (!user) {
             return NextResponse.json(
