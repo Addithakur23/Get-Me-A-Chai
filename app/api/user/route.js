@@ -22,6 +22,7 @@ export async function GET(request) {
         await connectDB();
         const session = await getServerSession(authOptions);
         const {searchParams}=new URL(request.url)
+        console.log("I am in backend")
         const username=searchParams.get("username")
         console.log(username)
         if ((!session?.user?.email && !session?.provider) || !username ) {
