@@ -5,10 +5,12 @@ import User from '@/models/User.js'
 import { notFound } from 'next/navigation.js'
 
 const Username = async({params}) => {
+  let p=await params
+  let username=p.username
+
   const checkUser= async()=>{
     await connectDB()
-    let p=await params
-   let user=await User.findOne({Username:p.username})
+   let user=await User.findOne({Username:username})
    if(!user){
      return notFound()
    }
@@ -16,7 +18,7 @@ const Username = async({params}) => {
   await checkUser()
         return (
           <>
-          <PaymentPage/>
+          <PaymentPage  username={username}/>
       </>
     )
   }

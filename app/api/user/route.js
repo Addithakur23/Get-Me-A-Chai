@@ -17,11 +17,14 @@ export async function getAllUsers() {
     }
 }
 
-export async function GET() {
+export async function GET(request) {
     try {
         await connectDB();
         const session = await getServerSession(authOptions);
-        if (!session?.user?.email && !session?.provider) {
+        const {searchParams}=new URL(request.url)
+        const username=searchParams.get("username")
+        console.log(username)
+        if ((!session?.user?.email && !session?.provider) || !username ) {
             return NextResponse.json(
                 { message: "Unauthorized" },
                 { status: 401 }
@@ -29,7 +32,7 @@ export async function GET() {
         }
         
 
-        const user = await User.findOne({ Email: session?.user?.email ?? "pundhiraditya428@gmail.com" ,Provider:session.provider}).lean();
+        const user = await User.findOne({ Email: session?.user?.email ?? "pundhiraditya428@gmail.com" ,Username:session?.user?.username ?? username}).lean();
 
         if (!user) {
             return NextResponse.json(

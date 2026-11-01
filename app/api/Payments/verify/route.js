@@ -7,11 +7,14 @@ import User from "@/models/User";
 import { authOptions } from "../../auth/[...nextauth]/route";
 import { getServerSession } from "next-auth";
 
-export async function GET(){
+export async function GET(request){
     
      try { await connectDB()
        const session = await getServerSession(authOptions);
-       const creator=await User.findOne({Provider:session.provider})
+        const {searchParams}=new URL(request.url)
+        const username=searchParams.get("username")
+        console.log(username)
+       const creator=await User.findOne({Username:session?.user?.username ?? username})
      const response=await Payment.find({creatorId:creator._id}).sort({Amount:-1}).limit(10)
      const all=await Payment.find({ creatorId:creator._id})
      const total=all.reduce((sum,Payment)=>sum+Payment.Amount,0)

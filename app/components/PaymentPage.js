@@ -6,7 +6,7 @@ import Footer from '../components/Footer.js'
 import { useState,useEffect } from 'react'
 import Hamburger from '../components/Hamburger.js'
 
-const PaymentPage = () => {
+const PaymentPage = ({username}) => {
    const [User, setUser] = useState(null)
     const [Payers, setPayers] = useState(null)
    const [payerName, setpayerName] = useState("")
@@ -14,9 +14,9 @@ const PaymentPage = () => {
    const [payerAmount, setpayerAmount] = useState("")
    const [Active, setActive] = useState(false)
    const [Click, setClick] = useState(false)
-
+   console.log(username)
    async function loadPayers(){
-     const response=await fetch("/api/Payments/verify")
+     const response=await fetch(`/api/Payments/verify?username=${username}`)
      if(!response.ok) return;
      const payers=await response.json()
      setPayers(payers)
@@ -24,7 +24,7 @@ const PaymentPage = () => {
     }
     useEffect(() => {
       async function loadUser() {
-        const response=await fetch("/api/user")
+        const response=await fetch(`/api/user?username=${username}`)
         if(!response.ok) return;
            const user=await response.json()
            setUser(user)

@@ -8,8 +8,10 @@ const page = async() => {
       safeCreator=creators.map((creator)=>({
         _id:creator._id.toString(),
         Username:creator.Username,
-        Name:creator.Name
-      }))
+        Name:creator.Name,
+        Email:creator.Email,
+        Provider:creator.provider
+    }))
     }
     
     return (
