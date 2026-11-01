@@ -25,12 +25,12 @@ export async function GET(request) {
         console.log("I am in backend")
         const username=searchParams.get("username")
         console.log(username)
-        if ((!session?.user?.email && !session?.provider) || !username ) {
-            return NextResponse.json(
-                { message: "Unauthorized" },
-                { status: 401 }
-            );
-        }
+        // if ((!session?.user?.email && !session?.provider) || !username ) {
+        //     return NextResponse.json(
+        //         { message: "Unauthorized" },
+        //         { status: 401 }
+        //     );
+        // }
         
 
         const user = await User.findOne({ Email: session?.user?.email ?? "pundhiraditya428@gmail.com" ,Username:session?.user?.username ?? username}).lean();
