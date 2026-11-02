@@ -47,7 +47,10 @@ setRazorpay_secret(user.Razorpay?.secret ??"");
      
   }, [session])  
     
-    async function createUser() {
+  async function createUser() {
+      if(Username.includes(" ")){
+        return alert("Username cannot contain spaces and @")
+      }
       const response=await fetch("/api/user",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({Name,Email,Username,Profile_picture,Cover_picture,Provider,ProviderAccountID,Razorpay_ID,Razorpay_secret})})
       if(response.status==400){
         alert("User already exists")
