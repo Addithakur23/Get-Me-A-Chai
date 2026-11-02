@@ -25,28 +25,15 @@ export async function GET(request) {
         console.log("I am in backend")
         const username=searchParams.get("username")
         console.log(username)
-        if(!session){
-            const user = await User.findOne({Username:session?.user?.username ?? username}).lean();
-             return NextResponse.json({
-    Name: user.Name,
-    Email: user.Email,
-    Username: user.Username,
-    Profile_picture: user.Profile_picture,
-    Cover_picture: user.Cover_picture,
-    Razorpay: {
-        ID: user.Razorpay.ID,
-        secret:decryptdata
-    }
-}, { status: 200 });
-        }
-        if (!session?.user?.email && !session?.provider) {
-            return NextResponse.json(
-                { message: "Unauthorized" },
-                { status: 401 }
-            );
-        }
+        // if ((!session?.user?.email && !session?.provider) || !username ) {
+        //     return NextResponse.json(
+        //         { message: "Unauthorized" },
+        //         { status: 401 }
+        //     );
+        // }
         
-        const user = await User.findOne({ Email: session?.user?.email,Provider:session.provider}).lean();
+
+        const user = await User.findOne({Username:session?.user?.username ?? username}).lean();
 
         if (!user) {
             return NextResponse.json(
