@@ -34,7 +34,7 @@ export async function GET(request) {
         
 
         const user = await User.findOne({Username:session?.user?.username ?? username}).lean();
-
+        console.log(user)
         if (!user) {
             return NextResponse.json(
                 { message: "User not found" },
