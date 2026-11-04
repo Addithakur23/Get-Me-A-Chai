@@ -77,7 +77,7 @@ setRazorpay_secret(user.Razorpay?.secret ??"");
 
     return (
    <>
-       <Dash_Navbar/>
+      {<Dash_Navbar/>} 
        
     <div className='dashboardPage flex flex-col items-center'>
       <div className="dashboardText text-center text-3xl font-bold mt-9.5">Welcome to your Dashboard</div>
