@@ -16,9 +16,11 @@ const Account_Hamburger = () => {
          console.log("userData",UserData)
 
         }
+        fetchUserData()
       }catch(err){
         console.log("Error in fetching user data",err.message)
      }
+    
    }, [])
    
   return (
