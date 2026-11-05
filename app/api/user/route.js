@@ -33,7 +33,10 @@ export async function GET(request) {
         // }
         
 
-        const user = await User.findOne({Username:session?.user?.username ?? username}).lean();
+        if(!session){const user = await User.findOne({Username:session?.user?.username ?? username}).lean();}
+        else{
+            const user=await User.findOne({Email:session?.user?.email,Provider:session?.provider})
+        }
         if (!user) {
             return NextResponse.json(
                 { message: "User not found" },
