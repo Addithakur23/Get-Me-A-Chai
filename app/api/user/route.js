@@ -32,10 +32,10 @@ export async function GET(request) {
         //     );
         // }
         
-
-        if(!session){const user = await User.findOne({Username:session?.user?.username ?? username}).lean();}
+        let user=null;
+        if(!session){ user = await User.findOne({Username:session?.user?.username ?? username}).lean();}
         else{
-            const user=await User.findOne({Email:session?.user?.email,Provider:session?.provider})
+            user=await User.findOne({Email:session?.user?.email,Provider:session?.provider})
         }
         if (!user) {
             return NextResponse.json(
