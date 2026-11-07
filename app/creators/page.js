@@ -13,6 +13,7 @@ const page = async() => {
         Provider:creator.provider
     }))
     }
+    console.log(safeCreator)
     
     return (
       <>
