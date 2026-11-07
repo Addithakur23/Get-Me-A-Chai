@@ -31,7 +31,13 @@ export async function POST(request){
      await connectDB();
       const session = await getServerSession(authOptions);
     const body=await request.json()
-      const creator=await User.findOne({Username:body.Username,Provider:session.provider})
+    let creator=null
+    if(!session){
+        creator = await User.findOne({Username:session?.user?.username ?? username}).lean();
+    }
+    else{
+        creator=await User.findOne({Username:body.Username,Provider:session.provider})
+    }
       const razorpaySecret=decrypt(
               creator.Razorpay.secret,
               creator.Razorpay.iv
