@@ -52,7 +52,7 @@ const PaymentPage = ({username}) => {
      alert("Please enter amount greater than 0")
     return
     }
-  const response=await fetch("/api/Payments/create-order",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username})})
+  const response=await fetch(`/api/Payments/create-order?username=${username}`,{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username})})
   if(!response.ok){
     const error=await response.json()
     console.error(error.message)
@@ -68,7 +68,7 @@ const PaymentPage = ({username}) => {
     
     name:"Get Me a Chai",
     handler:async function (response) {
-      await fetch("/api/Payments/verify",{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username,razorpay_order_id:response.razorpay_order_id,
+      await fetch(`/api/Payments/verify?username=${username}`,{method:"POST", headers:{"Content-type":"application/json"},body:JSON.stringify({payerName,Message,payerAmount,Username:User.Username,razorpay_order_id:response.razorpay_order_id,
         razorpay_payment_id:response.razorpay_payment_id,
         razorpay_signature:response.razorpay_signature
       })})      

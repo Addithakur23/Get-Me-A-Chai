@@ -31,6 +31,9 @@ export async function POST(request){
      await connectDB();
       const session = await getServerSession(authOptions);
     const body=await request.json()
+      const {searchParams}=new URL(request.url)
+        console.log("I am in backend")
+        const username=searchParams.get("username")
     let creator=null
     if(!session){
             creator = await User.findOne({Username:session?.user?.username ?? username}).lean();
