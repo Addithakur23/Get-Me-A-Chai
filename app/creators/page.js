@@ -1,6 +1,7 @@
 import React from 'react'
 import Creators_Page from '../components/Creators_Page'
 import { getAllUsers } from '../api/user/route'
+import decrypt from '@/lib/decrypted'
 const page = async() => {
     const creators=await getAllUsers()
     let safeCreator=[]
@@ -10,7 +11,12 @@ const page = async() => {
         Username:creator.Username,
         Name:creator.Name,
         Email:creator.Email,
-        Provider:creator.provider
+        Provider:creator.provider,
+         Razorpay: {
+        ID: creator.Razorpay.ID,
+        secret:creator.Razorpay.secret,
+        iv:creator.Razorpay.iv
+    }
     }))
     }
     console.log(safeCreator)

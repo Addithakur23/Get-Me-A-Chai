@@ -8,7 +8,14 @@ import connectDB from "@/lib/mongoConnect.js";
   try {  
      await connectDB();
     const body=await request.json()
-    const creator=await User.findOne({Username:body.Username})
+    let creator=null
+        if(!session){
+                creator = await User.findOne({Username:session?.user?.username ?? username}).lean();
+            }
+            else{
+                creator=await User.findOne({Username:body.Username})   
+        }
+ 
     if(!creator){
         return NextResponse.json({message:"User not found"},{status:404})
     }
