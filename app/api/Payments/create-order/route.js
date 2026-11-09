@@ -9,14 +9,8 @@ import { authOptions } from "../../auth/[...nextauth]/route";
  export async function POST(request){
   try {  
      await connectDB();
-    //   const session = await getServerSession(authOptions);
     const body=await request.json()
-    //   const {searchParams}=new URL(request.url)
-    //     console.log("I am in backend")
-    //     const username=searchParams.get("username")
-            const    creator=await User.findOne({Username:body.Username})   
-        
-        console.log(creator)
+    const creator=await User.findOne({Username:body.Username})   
  
     if(!creator){
         return NextResponse.json({message:"User not found"},{status:404})
