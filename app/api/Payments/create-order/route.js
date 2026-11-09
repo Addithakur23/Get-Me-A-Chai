@@ -21,7 +21,7 @@ import { authOptions } from "../../auth/[...nextauth]/route";
             else{
                 creator=await User.findOne({Username:body.Username})   
         }
-        console.log("creator",creator)
+        console.log(creator)
  
     if(!creator){
         return NextResponse.json({message:"User not found"},{status:404})
