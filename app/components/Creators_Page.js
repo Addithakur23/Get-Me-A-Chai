@@ -3,6 +3,7 @@ import Link from 'next/link'
 import React from 'react'
 
 const Creators_Page = ({creators}) => {
+  console.log(creators)
   return (
     <div className='creators flex flex-col gap-5   text-white'>
         {creators.map((creator,index)=>(
