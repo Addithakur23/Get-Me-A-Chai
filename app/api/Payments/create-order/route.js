@@ -3,8 +3,6 @@ import decrypt from "@/lib/decrypted.js";
 import User from "@/models/User.js";
 import { NextResponse } from "next/server";
 import connectDB from "@/lib/mongoConnect.js";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../auth/[...nextauth]/route";
 
  export async function POST(request){
   try {  

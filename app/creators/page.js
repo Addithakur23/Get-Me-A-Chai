@@ -19,7 +19,6 @@ const page = async() => {
     }
     }))
     }
-    console.log(safeCreator)
     
     return (
       <>
@@ -29,15 +28,11 @@ const page = async() => {
       <img src="\tea_cup_image-removebg-preview.png" alt="" width={40}/>
       </div>
       <div className="Heading text-5xl font-bold text-center">Discover Creators</div>
-      <div className="searchBar text-center">
-
-       <div className="searchField relative">
-        <input type="text" placeholder='Enter creator Name' className='bar w-[30vw] border-white border py-4 px-8 rounded-4xl'/>
-        </div>
-       <div className="searchImage ">
-        <img src="/search.png" alt="" width={30} className='absolute'/>
-        </div>
-
+      <div className="searchElement flex items-center justify-center">
+      <div className="searchBar mt-7 relative ">
+        <input type="text" placeholder='Enter creator Name' className='bar border-white border py-4 pl-11 pr-40 rounded-4xl'/>
+          <img src="/search.png" alt="" width={25} className='absolute top-1/2 left-3 -translate-y-1/2'/>
+      </div>
       </div>
       <Creators_Page creators={safeCreator}/>
     </>
