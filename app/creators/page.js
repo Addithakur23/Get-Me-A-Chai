@@ -1,14 +1,19 @@
 import React from 'react'
 import Creators_Page from '../components/Creators_Page'
 import { getAllUsers } from '../api/user/route'
+import Payment from '@/models/Payment'
+import connectDB from '@/lib/mongoConnect'
 import decrypt from '@/lib/decrypted'
 const page = async() => {
+  await connectDB()
+
     const creators=await getAllUsers()
     let safeCreator=[]
     console.log(creators)
     if(creators){
-      safeCreator=creators.map((creator)=>({
+      safeCreator=await Promise.all(creators.map(async (creator)=>({
         _id:creator._id.toString(),
+        paymentCount:await Payment.countDocuments({creatorId:creator._id}),
         Username:creator.Username,
         Name:creator.Name,
         Email:creator.Email,
@@ -18,7 +23,7 @@ const page = async() => {
         secret:creator.Razorpay.secret,
         iv:creator.Razorpay.iv
     }
-    }))
+    })))
     }
     
     return (
