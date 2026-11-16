@@ -35,8 +35,8 @@ const page = async() => {
       <div className="Heading text-5xl font-bold text-center mb-3">Discover creators</div>
       <div className="subheading text-center text-gray-300">Buy a creator a chai and help them keep making great things.</div>
       <div className="searchElement flex items-center justify-center">
-      <div className="searchBar mt-9 bg-transparent relative ">
-        <input type="text" placeholder='Search creators...' className='bar border-white border py-4 pl-11 pr-56 rounded-4xl'/>
+      <div className="searchBar mt-9 bg-transparent relative w-[50vw] max-[706px]:w-[85vw]">
+        <input type="text" id="search" placeholder='Search creators...'  className='bar border-white border py-4 pl-11 w-full rounded-4xl'/>
           <img src="/search.png" alt="" width={19} className='absolute top-1/2 left-3 -translate-y-1/2'/>
       </div>
       </div>

@@ -6,7 +6,8 @@ const Creators_Page = ({creators}) => {
   console.log(creators)
   return (
     <div className="creatorBox flex items-center justify-center">  
-    <div className='creators grid grid-cols-[repeat(3,350px)] gap-5 text-white mt-9 mb-10 content-center justify-items-center'>
+    <div className='creators max-w-[1254px]:grid max-w-[1254px]:grid-cols-[repeat(3,350px)] flex flex-wrap gap-5 text-white mt-9 mb-10 max-w-[1254px]:content-center max-w-[1254px]:justify-items-center justify-center items-center'>
+     {/* <div className='creators flex flex-3 flex-wrap gap-5 text-white mt-9 mb-10 items-center justify-center'>  */}
         {creators.map((creator,index)=>(
      <Link href={`https://get-me-a-chai-khaki-seven.vercel.app/${creator.Username}`}  key={creator._id}> 
      <div className="creator bg-blue-500 hover:-translate-y-1 w-[350px] h-[190px] p-5 rounded-2xl hover:border hover:border-purple-400">
